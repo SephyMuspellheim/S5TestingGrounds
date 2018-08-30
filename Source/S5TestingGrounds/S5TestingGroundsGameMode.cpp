@@ -2,7 +2,7 @@
 
 #include "S5TestingGroundsGameMode.h"
 #include "S5TestingGroundsHUD.h"
-#include "S5TestingGroundsCharacter.h"
+#include "Player/FirstPersonCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 AS5TestingGroundsGameMode::AS5TestingGroundsGameMode()
