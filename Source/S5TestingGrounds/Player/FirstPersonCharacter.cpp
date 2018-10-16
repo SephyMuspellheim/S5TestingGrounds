@@ -52,7 +52,7 @@ void AFirstPersonCharacter::BeginPlay()
 	EquippedWeapon = GetWorld()->SpawnActor<AWeapon>(WeaponBlueprint);
 	//Attach gun mesh component to Skeleton, doing it here because the skeleton is not yet created in the constructor
 	EquippedWeapon->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
-	EquippedWeapon->AnimInstance = Mesh1P->GetAnimInstance();
+	EquippedWeapon->FPAnimInstance = Mesh1P->GetAnimInstance();
 
 	// Bind fire event
 	InputComponent->BindAction("Fire", IE_Pressed, EquippedWeapon, &AWeapon::OnFire);
