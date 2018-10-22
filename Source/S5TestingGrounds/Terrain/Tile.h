@@ -31,10 +31,10 @@ public:
 	ATile();
 
 	UFUNCTION(BlueprintCallable, Category = "Spawning")
-	void PlaceActors(TSubclassOf<AActor> ToSpawn, int MinSpawn = 1, int MaxSpawn = 1, float Radius = 500, float MinScale = 1, float MaxScale = 1);
+		void PlaceActors(TSubclassOf<AActor> ToSpawn, int MinSpawn = 1, int MaxSpawn = 1, float Radius = 500, float MinScale = 1, float MaxScale = 1);
 
 	UFUNCTION(BlueprintCallable, Category = "Spawning")
-	void PlaceAIPawns(TSubclassOf<APawn> ToSpawn, int MinSpawn = 1, int MaxSpawn = 1, float Radius = 500);
+		void PlaceAIPawns(TSubclassOf<APawn> ToSpawn, int MinSpawn = 1, int MaxSpawn = 1, float Radius = 500);
 
 protected:
 	// Called when the game starts or when spawned
@@ -42,19 +42,19 @@ protected:
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Navigation")
-	FVector NavigationBoundsOffset;
+		FVector NavigationBoundsOffset;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Spawning")
-	FVector MinExtent;
+		FVector MinExtent;
 	UPROPERTY(EditDefaultsOnly, Category = "Spawning")
-	FVector MaxExtent;
+		FVector MaxExtent;
 
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Pool")
-	void SetPool(UActorPool* Pool);
+		void SetPool(UActorPool* Pool);
 
 private:
 
@@ -64,12 +64,9 @@ private:
 
 	bool FindEmptyLocation(FVector& OutLocation, float Radius);
 
-	template<class T>
-	void RandomlyPlaceActors(TSubclassOf<T> ToSpawn, int MinSpawn = 1, int MaxSpawn = 1, float Radius = 500, float MinScale = 1, float MaxScale = 1);
+	void PlaceActor(TSubclassOf<AActor> ToSpawn, const FSpawnPosition& SpawnPosition);
 
-	void PlaceActor(TSubclassOf<AActor> ToSpawn, FSpawnPosition SpawnPosition);
-
-	void PlaceActor(TSubclassOf<APawn> ToSpawn, FSpawnPosition SpawnPosition);
+	void PlaceAIPawn(TSubclassOf<APawn> ToSpawn, const FSpawnPosition& SpawnPosition);
 
 	bool CanSpawnAtLocation(FVector Location, float Radius);
 
